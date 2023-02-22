@@ -10,7 +10,6 @@ import '../controller/auth_controller.dart';
 import 'controller/token_controller.dart';
 import 'controller/user_controller.dart';
 import 'controller/finance_record_controller.dart';
-import 'controller/finance_record_search_controller.dart';
 
 class AppService extends ApplicationChannel {
   late final ManagedContext managedContext;
@@ -26,21 +25,20 @@ class AppService extends ApplicationChannel {
 
   @override
   Controller get entryPoint => Router()
-        ..route('token/[:refresh]').link(
-          () => AppAuthController(managedContext),
-        )
-        ..route('user')
-            .link(AppTokenController.new)!
-            .link(() => AppUserController(managedContext))
-        ..route('finance-record/search/[:by]')
-            .link(() => FinanceRecordController(managedContext))
-        ..route('finance-record/[:id]')
-            .link(() => FinanceRecordController.new(managedContext))!
-            .link(() => FinanceRecordController(managedContext))
-      /* ..route('finance-record/seacrh')
-        .link(() => FinanceRecordSearchController.new(managedContext))!
-        .link(() => FinanceRecordSearchController(managedContext)) */
-      ;
+    ..route('token/[:refresh]').link(
+      () => AppAuthController(managedContext),
+    )
+    ..route('user')
+        .link(AppTokenController.new)!
+        .link(() => AppUserController(managedContext))
+    ..route('finance-record/pages/[:pagination]')
+        .link(() => FinanceRecordController.new(managedContext))!
+        .link(() => FinanceRecordController(managedContext))
+    ..route('finance-record/search/[:by]')
+        .link(() => FinanceRecordController(managedContext))
+    ..route('finance-record/[:id]')
+        .link(() => FinanceRecordController.new(managedContext))!
+        .link(() => FinanceRecordController(managedContext));
 
   PersistentStore _initDatabase() {
     final username = Platform.environment['DB_USERNAME'] ?? 'postgres';

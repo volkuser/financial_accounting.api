@@ -7,13 +7,13 @@ class FinanceRecordController extends ResourceController {
 
   final ManagedContext context;
 
-  @Operation.get()
+  /* @Operation.get()
   Future<Response> getAllFinanceRecords() async {
     final financeRecordQuery = Query<FinanceRecord>(context);
     final financeRecords = await financeRecordQuery.fetch();
 
     return Response.ok(financeRecords);
-  }
+  } */
 
   @Operation.get('id')
   Future<Response> getFinanceRecordByID(@Bind.path('id') int id) async {
@@ -80,5 +80,17 @@ class FinanceRecordController extends ResourceController {
     final matchingRecords = await financeRecordQuery.fetch();
 
     return Response.ok(matchingRecords);
+  }
+
+  @Operation.get('pagination')
+  Future<Response> getFinanceRecordsByPagination(
+      {@Bind.query('page') int page = 1,
+      @Bind.query('perPage') int perPage = 2}) async {
+    final financeRecordQuery = Query<FinanceRecord>(context)
+      ..fetchLimit = perPage
+      ..offset = (page - 1) * perPage;
+    final financeRecords = await financeRecordQuery.fetch();
+
+    return Response.ok(financeRecords);
   }
 }
