@@ -1,0 +1,287 @@
+[
+  {
+    "_id": "43a2326d-85e9-42bc-b28f-6061758e1589",
+    "colId": "1ce70669-0921-4e30-8c19-2691fb0266a8",
+    "containerId": "",
+    "name": "user password updating",
+    "url": "localhost:8888/user?newPassword=321123&oldPassword=123321",
+    "method": "PUT",
+    "sortNum": 10000,
+    "created": "2023-02-23T00:57:08.614Z",
+    "modified": "2023-02-23T00:57:08.614Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "newPassword",
+        "value": "321123",
+        "isPath": false
+      },
+      {
+        "name": "oldPassword",
+        "value": "123321",
+        "isPath": false
+      }
+    ],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxOTk4MjQsImlhdCI6MTY3NzExMzQyNCwiaWQiOjF9.sNM0qoM5w43KYCL8gzCt7O3rVTxkDUOcJBgLha7zwHc"
+    },
+    "tests": []
+  },
+  {
+    "_id": "501ca3d6-a4e8-4ba2-bac1-a97cb00fbee4",
+    "colId": "1ce70669-0921-4e30-8c19-2691fb0266a8",
+    "containerId": "",
+    "name": "user data updating",
+    "url": "localhost:8888/user",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2023-02-23T00:57:18.281Z",
+    "modified": "2023-02-23T00:57:18.281Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"userName\": \"SUPERDDO\",\n    \"email\": \"isip_d.o.demidov@mpt.ru\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxOTkzMjMsImlhdCI6MTY3NzExMjkyMywiaWQiOjF9.E7EpR8V66ZVUIQmHqn1zClMQbkVeto2pNXXyMU9Rts8"
+    },
+    "tests": []
+  },
+  {
+    "_id": "a81e3011-95be-4594-a546-f8794416d0c6",
+    "colId": "1ce70669-0921-4e30-8c19-2691fb0266a8",
+    "containerId": "",
+    "name": "user info getting",
+    "url": "localhost:8888/user",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-02-23T00:57:22.547Z",
+    "modified": "2023-02-23T00:57:22.547Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxOTkzMjMsImlhdCI6MTY3NzExMjkyMywiaWQiOjF9.E7EpR8V66ZVUIQmHqn1zClMQbkVeto2pNXXyMU9Rts8"
+    },
+    "tests": []
+  },
+  {
+    "_id": "8029e8d6-f2c7-475a-a52f-a5cb0f111722",
+    "colId": "1ce70669-0921-4e30-8c19-2691fb0266a8",
+    "containerId": "",
+    "name": "token updating",
+    "url": "localhost:8888/token/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxOTkzMjMsImlhdCI6MTY3NzExMjkyMywiaWQiOjF9.E7EpR8V66ZVUIQmHqn1zClMQbkVeto2pNXXyMU9Rts8",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2023-02-23T00:57:27.031Z",
+    "modified": "2023-02-23T00:57:27.031Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "dc08cdca-dcdc-4275-8d83-04a03420d8d8",
+    "colId": "1ce70669-0921-4e30-8c19-2691fb0266a8",
+    "containerId": "",
+    "name": "registration",
+    "url": "localhost:8888/token",
+    "method": "PUT",
+    "sortNum": 50000,
+    "created": "2023-02-23T00:57:31.386Z",
+    "modified": "2023-02-23T00:57:31.386Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"userName\": \"DDO\",\n  \"email\": \"isip_d.o.demidov@gmail.com\",\n  \"password\": \"123123\"\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxOTkzMjMsImlhdCI6MTY3NzExMjkyMywiaWQiOjF9.E7EpR8V66ZVUIQmHqn1zClMQbkVeto2pNXXyMU9Rts8"
+    },
+    "tests": []
+  },
+  {
+    "_id": "a8fde270-c0c3-4889-b29c-9a4495b4b721",
+    "colId": "1ce70669-0921-4e30-8c19-2691fb0266a8",
+    "containerId": "",
+    "name": "authentiication",
+    "url": "localhost:8888/token",
+    "method": "POST",
+    "sortNum": 60000,
+    "created": "2023-02-23T00:57:34.933Z",
+    "modified": "2023-02-23T00:57:34.933Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"userName\": \"SUPERDDO\",\n  \"password\": \"123321\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f6748986-8970-49c9-a364-ee05f922db55",
+    "colId": "cedb39f2-348f-4c6f-837d-268e9c08f3e5",
+    "containerId": "",
+    "name": "all finance records getting ",
+    "url": "localhost:8888/finance-record",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-02-23T01:33:11.598Z",
+    "modified": "2023-02-23T01:33:11.598Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "0e049ddc-9f4b-4794-94c6-ddb4dc9131e9",
+    "colId": "cedb39f2-348f-4c6f-837d-268e9c08f3e5",
+    "containerId": "",
+    "name": "finance record search by category",
+    "url": "localhost:8888/finance-record/search/by-category?query=Category 2",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-02-23T01:33:19.594Z",
+    "modified": "2023-02-23T01:33:19.594Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "query",
+        "value": "Category 2",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "c20365e3-e32e-408e-b985-a8c23f08f15e",
+    "colId": "cedb39f2-348f-4c6f-837d-268e9c08f3e5",
+    "containerId": "",
+    "name": "finance record deleting",
+    "url": "localhost:8888/finance-record/4",
+    "method": "DELETE",
+    "sortNum": 30000,
+    "created": "2023-02-23T01:33:25.172Z",
+    "modified": "2023-02-23T01:33:25.172Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "7f5cd15d-b7b6-498c-8077-c56efaa48771",
+    "colId": "cedb39f2-348f-4c6f-837d-268e9c08f3e5",
+    "containerId": "",
+    "name": "once finance record getting",
+    "url": "localhost:8888/finance-record/2",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2023-02-23T01:33:32.773Z",
+    "modified": "2023-02-23T01:43:08.284Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "8cfc12bd-a786-4d8c-a431-17e51871ee9d",
+    "colId": "cedb39f2-348f-4c6f-837d-268e9c08f3e5",
+    "containerId": "",
+    "name": "finance record pagination",
+    "url": "localhost:8888/finance-record/pages/pagination",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2023-02-23T01:33:45.633Z",
+    "modified": "2023-02-23T01:33:45.633Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "cf77c77e-3288-4dba-99bb-6a22a3d60420",
+    "colId": "cedb39f2-348f-4c6f-837d-268e9c08f3e5",
+    "containerId": "",
+    "name": "finance record updating",
+    "url": "localhost:8888/finance-record/5",
+    "method": "PUT",
+    "sortNum": 80000,
+    "created": "2023-02-23T01:33:55.509Z",
+    "modified": "2023-02-23T01:33:55.509Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"transactionNumber\": 7,\n  \"transactionName\": \"Transaction 3\",\n  \"description\": \"bla-bla\",\n  \"category\": \"Category 2\",\n  \"transactionDate\": \"2022-02-22T13:30:00.000Z\",\n  \"transactionAmount\": 660.0\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "c095d175-f612-4989-9fb7-fcbd55087e88",
+    "colId": "cedb39f2-348f-4c6f-837d-268e9c08f3e5",
+    "containerId": "",
+    "name": "finance record creating",
+    "url": "localhost:8888/finance-record",
+    "method": "POST",
+    "sortNum": 90000,
+    "created": "2023-02-23T01:33:59.476Z",
+    "modified": "2023-02-23T01:33:59.476Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"transactionNumber\": 7,\n  \"transactionName\": \"Transaction 3\",\n  \"description\": \"bla-bla\",\n  \"category\": \"Category 3\",\n  \"transactionDate\": \"2022-02-22T13:30:00.000Z\",\n  \"transactionAmount\": 660.0\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7d0aaea4-0a14-435a-b60a-d836d3809f95",
+    "colId": "d9de6f36-8833-4792-8cdd-83b652e1815e",
+    "containerId": "",
+    "name": "finance record full filter",
+    "url": "localhost:8888/finance-record/selection/filter?transactionNumber=2&transactionName=Transaction 2&description=Description for transaction 2&category=Category 2&transactionDate=2022-02-21T14:30:00.000Z&transactionAmount=200.0",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-02-23T01:42:49.981Z",
+    "modified": "2023-02-23T01:42:49.981Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "transactionNumber",
+        "value": "2",
+        "isPath": false
+      },
+      {
+        "name": "transactionName",
+        "value": "Transaction 2",
+        "isPath": false
+      },
+      {
+        "name": "description",
+        "value": "Description for transaction 2",
+        "isPath": false
+      },
+      {
+        "name": "category",
+        "value": "Category 2",
+        "isPath": false
+      },
+      {
+        "name": "transactionDate",
+        "value": "2022-02-21T14:30:00.000Z",
+        "isPath": false
+      },
+      {
+        "name": "transactionAmount",
+        "value": "200.0",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  }
+]

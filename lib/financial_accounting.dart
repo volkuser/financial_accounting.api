@@ -34,6 +34,9 @@ class AppService extends ApplicationChannel {
     ..route('finance-record/pages/[:pagination]')
         .link(() => FinanceRecordController.new(managedContext))!
         .link(() => FinanceRecordController(managedContext))
+    ..route('finance-record/selection/[:filter]')
+        .link(() => FinanceRecordController.new(managedContext))!
+        .link(() => FinanceRecordController(managedContext))
     ..route('finance-record/search/[:by]')
         .link(() => FinanceRecordController(managedContext))
     ..route('finance-record/[:id]')

@@ -7,13 +7,13 @@ class FinanceRecordController extends ResourceController {
 
   final ManagedContext context;
 
-  /* @Operation.get()
+  @Operation.get()
   Future<Response> getAllFinanceRecords() async {
     final financeRecordQuery = Query<FinanceRecord>(context);
     final financeRecords = await financeRecordQuery.fetch();
 
     return Response.ok(financeRecords);
-  } */
+  }
 
   @Operation.get('id')
   Future<Response> getFinanceRecordByID(@Bind.path('id') int id) async {
@@ -91,6 +91,26 @@ class FinanceRecordController extends ResourceController {
       ..offset = (page - 1) * perPage;
     final financeRecords = await financeRecordQuery.fetch();
 
+    return Response.ok(financeRecords);
+  }
+
+  @Operation.get('filter')
+  Future<Response> getFinanceRecordsByFilter(
+      @Bind.query('transactionNumber') int? transactionNumber,
+      @Bind.query('transactionName') String? transactionName,
+      @Bind.query('description') String? description,
+      @Bind.query('category') String? category,
+      @Bind.query('transactionDate') DateTime? transactionDate,
+      @Bind.query('transactionAmount') double? transactionAmount) async {
+    final query = Query<FinanceRecord>(context)
+      ..where((record) => record.transactionNumber).equalTo(transactionNumber)
+      ..where((record) => record.transactionName).equalTo(transactionName)
+      ..where((record) => record.description).equalTo(description)
+      ..where((record) => record.category).equalTo(category)
+      ..where((record) => record.transactionDate).equalTo(transactionDate)
+      ..where((record) => record.transactionAmount).equalTo(transactionAmount);
+
+    final financeRecords = await query.fetch();
     return Response.ok(financeRecords);
   }
 }
