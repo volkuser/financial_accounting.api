@@ -16,12 +16,11 @@ class AppUserController extends ResourceController {
     @Bind.header(HttpHeaders.authorizationHeader) String header,
   ) async {
     try {
-      // Получаем id пользователя
-      // Была создана новая функция ее нужно реализоваться для просмотра функции нажмите на картинку
+      // get id user
       final id = AppUtil.getIdFromHeader(header);
-      // Получаем данные пользователя по его id
+      // get data user by id
       final user = await managedContext.fetchObjectWithID<User>(id);
-      // Удаляем не нужные параметры для красивого вывода данных пользователя
+      // delete extra parameteres for beautiful outut
       user!.removePropertiesFromBackingMap(['refreshToken', 'accessToken']);
 
       return AppResponse.ok(
@@ -37,22 +36,20 @@ class AppUserController extends ResourceController {
     @Bind.body() User user,
   ) async {
     try {
-      // Получаем id пользователя
-      // Была создана новая функция ее нужно реализоваться для просмотра функции нажмите на картинку
+      // get user id
       final id = AppUtil.getIdFromHeader(header);
-      // Получаем данные пользователя по его id
+      // get user data by id
       final fUser = await managedContext.fetchObjectWithID<User>(id);
-      // Запрос для обновления данных пользователя
+      // query for user updating by id
       final qUpdateUser = Query<User>(managedContext)
-        ..where((element) => element.id)
-            .equalTo(id) // Поиск пользователя осущетсвляется по id
+        ..where((element) => element.id).equalTo(id) // fund user by id
         ..values.userName = user.userName ?? fUser!.userName
         ..values.email = user.email ?? fUser!.email;
-      // Вызов функция для обновления данных пользователя
+
       await qUpdateUser.updateOne();
-      // Получаем обновленного пользователя
+      // get update user
       final findUser = await managedContext.fetchObjectWithID<User>(id);
-      // Удаляем не нужные параметры для красивого вывода данных пользователя
+
       findUser!.removePropertiesFromBackingMap(['refreshToken', 'accessToken']);
 
       return AppResponse.ok(
@@ -71,11 +68,8 @@ class AppUserController extends ResourceController {
     @Bind.query('oldPassword') String oldPassword,
   ) async {
     try {
-      // Получаем id пользователя
-      // Была создана новая функция ее нужно реализоваться для просмотра функции нажмите на картинку
       final id = AppUtil.getIdFromHeader(header);
-      // Получаем данные пользователя по его id
-      // Поиск пользователя по имени в базе данных
+
       final qFindUser = Query<User>(managedContext)
         ..where((element) => element.id).equalTo(id)
         ..returningProperties(
@@ -85,30 +79,29 @@ class AppUserController extends ResourceController {
           ],
         );
 
-      // Получаем данные только одного пользователя
       final fUser = await qFindUser.fetchOne();
 
-      // Создаем hash старого пароля
+      // create hash of old password
       final oldHashPassword =
           generatePasswordHash(oldPassword, fUser!.salt ?? "");
 
-      // Проваряем старый пароль с паролем в базе данных
+      // check old password with password from database
       if (oldHashPassword != fUser.hashPassword) {
         return AppResponse.badrequest(
           message: 'Неверный старый пароль',
         );
       }
 
-      // Создаем hash нового пароля
+      // create hash of new password
       final newHashPassword =
           generatePasswordHash(newPassword, fUser.salt ?? "");
 
-      // Создаем запрос на обнолвения пароля
+      // create query for password updating
       final qUpdateUser = Query<User>(managedContext)
         ..where((x) => x.id).equalTo(id)
         ..values.hashPassword = newHashPassword;
 
-      // Обновляем пароль
+      // update password
       await qUpdateUser.updateOne();
 
       return AppResponse.ok(body: 'Пароль успешно обновлен');

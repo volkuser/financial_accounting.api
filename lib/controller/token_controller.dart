@@ -9,14 +9,14 @@ class AppTokenController extends Controller {
   @override
   FutureOr<RequestOrResponse?> handle(Request request) {
     try {
-      // Получаем токен из header запроса
+      // get token from header query
       final header = request.raw.headers.value(HttpHeaders.authorizationHeader);
-      // Из header получаем token
+      // from header get token
       final token = const AuthorizationBearerParser().parse(header);
 
-      // Получаем jwtClaim для проверки token
+      // get jwtClaim for check token
       final jwtClaim = verifyJwtHS256Signature(token ?? "", "SECRET_KEY");
-      // Валидируем наш token
+      // validate token
       jwtClaim.validate();
       return request;
     } on JwtException catch (e) {

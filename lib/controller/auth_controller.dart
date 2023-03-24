@@ -22,7 +22,7 @@ class AppAuthController extends ResourceController {
     }
 
     try {
-      // Поиск пользователя по имени в базе данных
+      // find user by name in database
       final qFindUser = Query<User>(managedContext)
         ..where((element) => element.userName).equalTo(user.userName)
         ..returningProperties(
@@ -33,23 +33,23 @@ class AppAuthController extends ResourceController {
           ],
         );
 
-      // получаем первый элемент из поиска
+      // get first element from list
       final findUser = await qFindUser.fetchOne();
 
       if (findUser == null) {
         throw QueryException.input('Пользователь не найден', []);
       }
 
-      // генерация хэша пароля для дальнейшей проверки
+      // generate hash password for next check
       final requestHashPassword =
           generatePasswordHash(user.password ?? '', findUser.salt ?? '');
 
-      // Проверка пароля
+      // chack [assword]
       if (requestHashPassword == findUser.hashPassword) {
-        // Обновления token пароля
+        // update password token
         _updateTokens(findUser.id ?? -1, managedContext);
 
-        // Получаем данные пользователя
+        // get user data
         final newUser =
             await managedContext.fetchObjectWithID<User>(findUser.id);
 
@@ -74,34 +74,34 @@ class AppAuthController extends ResourceController {
       );
     }
 
-    // Генерация соли
+    // generate salt
     final salt = generateRandomSalt();
-    // Генерация хэша пароля
+    // generate hash password
     final hashPassword = generatePasswordHash(user.password!, salt);
 
     try {
       late final int id;
 
-      // создаем транзакицю
+      // create transaction
       await managedContext.transaction((transaction) async {
-        // Создаем запрос для создания пользователя
+        // create query for use addong
         final qCreateUser = Query<User>(transaction)
           ..values.userName = user.userName
           ..values.email = user.email
           ..values.salt = salt
           ..values.hashPassword = hashPassword;
 
-        // Добавление пользоваетля в базу данных
+        // add user in database
         final createdUser = await qCreateUser.insert();
 
-        // Сохраняем id пользователя
+        // save user id
         id = createdUser.id!;
 
-        // Обновление токена
+        // update token
         _updateTokens(id, transaction);
       });
 
-      // Получаем данные пользователя по id
+      // get user data by id
       final userData = await managedContext.fetchObjectWithID<User>(id);
 
       return AppResponse.ok(
@@ -117,17 +117,17 @@ class AppAuthController extends ResourceController {
   Future<Response> refreshToken(
       @Bind.path('refresh') String refreshToken) async {
     try {
-      // Полчаем id пользователя из jwt token
+      // get user id from jwt token
       final id = AppUtil.getIdFromToken(refreshToken);
 
-      // Получаем данные пользователя по его id
+      // get user data by her id
       final user = await managedContext.fetchObjectWithID<User>(id);
 
       if (user!.refreshToken != refreshToken) {
         return Response.unauthorized(body: 'Token не валидный');
       }
 
-      // Обновление token
+      // update token
       _updateTokens(id, managedContext);
 
       return Response.ok(
@@ -152,11 +152,11 @@ class AppAuthController extends ResourceController {
     await qUpdateTokens.updateOne();
   }
 
-  // Генерация jwt token
+  // generate jwt token
   Map<String, String> _getTokens(int id) {
     final key = Platform.environment['SECRET_KEY'] ?? 'SECRET_KEY';
     final accessClaimSet = JwtClaim(
-      maxAge: const Duration(hours: 1), // Время жизни token
+      maxAge: const Duration(hours: 1), // life time token
       otherClaims: {'id': id},
     );
     final refreshClaimSet = JwtClaim(
