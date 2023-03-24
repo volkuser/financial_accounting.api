@@ -4,16 +4,16 @@
     "colId": "1ce70669-0921-4e30-8c19-2691fb0266a8",
     "containerId": "",
     "name": "user password updating",
-    "url": "localhost:8888/user?newPassword=321123&oldPassword=123321",
+    "url": "localhost:8888/user?newPassword=123456&oldPassword=123321",
     "method": "PUT",
     "sortNum": 10000,
     "created": "2023-02-23T00:57:08.614Z",
-    "modified": "2023-02-23T00:57:08.614Z",
+    "modified": "2023-03-24T09:02:46.350Z",
     "headers": [],
     "params": [
       {
         "name": "newPassword",
-        "value": "321123",
+        "value": "123456",
         "isPath": false
       },
       {
@@ -24,7 +24,7 @@
     ],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxOTk4MjQsImlhdCI6MTY3NzExMzQyNCwiaWQiOjF9.sNM0qoM5w43KYCL8gzCt7O3rVTxkDUOcJBgLha7zwHc"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzk3MzQ5MTgsImlhdCI6MTY3OTY0ODUxOCwiaWQiOjV9.qmeFZAv7GNvm4nVGj7W8WJUlkg6d6yIUw-tikjO0tJQ"
     },
     "tests": []
   },
@@ -37,17 +37,17 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2023-02-23T00:57:18.281Z",
-    "modified": "2023-02-23T00:57:18.281Z",
+    "modified": "2023-03-23T20:35:23.334Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"userName\": \"SUPERDDO\",\n    \"email\": \"isip_d.o.demidov@mpt.ru\"\n}",
+      "raw": "{\n    \"userName\": \"SUPEDDO\",\n    \"email\": \"isip_d.o.demidov@mpt.ru\"\n}",
       "form": []
     },
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxOTkzMjMsImlhdCI6MTY3NzExMjkyMywiaWQiOjF9.E7EpR8V66ZVUIQmHqn1zClMQbkVeto2pNXXyMU9Rts8"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzk2OTAwNTEsImlhdCI6MTY3OTYwMzY1MSwiaWQiOjF9.-mjHywUNp9U2aCLc5ovAJU-V7qh4448dwlEneLiq3vU"
     },
     "tests": []
   },
@@ -60,12 +60,12 @@
     "method": "GET",
     "sortNum": 30000,
     "created": "2023-02-23T00:57:22.547Z",
-    "modified": "2023-02-23T00:57:22.547Z",
+    "modified": "2023-03-23T20:35:30.976Z",
     "headers": [],
     "params": [],
     "auth": {
       "type": "bearer",
-      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzcxOTkzMjMsImlhdCI6MTY3NzExMjkyMywiaWQiOjF9.E7EpR8V66ZVUIQmHqn1zClMQbkVeto2pNXXyMU9Rts8"
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzk2OTAwNTEsImlhdCI6MTY3OTYwMzY1MSwiaWQiOjF9.-mjHywUNp9U2aCLc5ovAJU-V7qh4448dwlEneLiq3vU"
     },
     "tests": []
   },
@@ -92,12 +92,12 @@
     "method": "PUT",
     "sortNum": 50000,
     "created": "2023-02-23T00:57:31.386Z",
-    "modified": "2023-02-23T00:57:31.386Z",
+    "modified": "2023-03-24T08:46:59.896Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"userName\": \"DDO\",\n  \"email\": \"isip_d.o.demidov@gmail.com\",\n  \"password\": \"123123\"\n}",
+      "raw": "{\n  \"userName\": \"test\",\n  \"email\": \"test@test.test\",\n  \"password\": \"123321\"\n}",
       "form": []
     },
     "auth": {
@@ -110,17 +110,17 @@
     "_id": "a8fde270-c0c3-4889-b29c-9a4495b4b721",
     "colId": "1ce70669-0921-4e30-8c19-2691fb0266a8",
     "containerId": "",
-    "name": "authentiication",
+    "name": "authorization",
     "url": "localhost:8888/token",
     "method": "POST",
     "sortNum": 60000,
     "created": "2023-02-23T00:57:34.933Z",
-    "modified": "2023-02-23T00:57:34.933Z",
+    "modified": "2023-03-24T09:08:08.388Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"userName\": \"SUPERDDO\",\n  \"password\": \"123321\"\n}",
+      "raw": "{\n  \"userName\": \"test\",\n  \"password\": \"123456\"\n}",
       "form": []
     },
     "tests": []
