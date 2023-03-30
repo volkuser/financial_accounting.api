@@ -32,15 +32,14 @@ class AppService extends ApplicationChannel {
         .link(AppTokenController.new)!
         .link(() => AppUserController(managedContext))
     ..route('finance-record/pages/[:pagination]')
-        .link(() => FinanceRecordController.new(managedContext))!
         .link(() => FinanceRecordController(managedContext))
     ..route('finance-record/selection/[:filter]')
-        .link(() => FinanceRecordController.new(managedContext))!
         .link(() => FinanceRecordController(managedContext))
     ..route('finance-record/search/[:by]')
         .link(() => FinanceRecordController(managedContext))
     ..route('finance-record/[:id]')
-        .link(() => FinanceRecordController.new(managedContext))!
+        .link(() => FinanceRecordController(managedContext))
+    ..route('finance-record/by-id/[:go-deleted]')
         .link(() => FinanceRecordController(managedContext));
 
   PersistentStore _initDatabase() {

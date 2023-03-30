@@ -115,12 +115,12 @@
     "method": "POST",
     "sortNum": 60000,
     "created": "2023-02-23T00:57:34.933Z",
-    "modified": "2023-03-24T09:08:08.388Z",
+    "modified": "2023-03-30T08:12:41.577Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"userName\": \"test\",\n  \"password\": \"123456\"\n}",
+      "raw": "{\n  \"userName\": \"test\",\n  \"password\": \"123321\"\n}",
       "form": []
     },
     "tests": []
@@ -164,11 +164,11 @@
     "colId": "cedb39f2-348f-4c6f-837d-268e9c08f3e5",
     "containerId": "",
     "name": "finance record deleting",
-    "url": "localhost:8888/finance-record/4",
+    "url": "localhost:8888/finance-record/6",
     "method": "DELETE",
     "sortNum": 30000,
     "created": "2023-02-23T01:33:25.172Z",
-    "modified": "2023-02-23T01:33:25.172Z",
+    "modified": "2023-03-30T15:31:46.147Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -229,12 +229,12 @@
     "method": "POST",
     "sortNum": 90000,
     "created": "2023-02-23T01:33:59.476Z",
-    "modified": "2023-02-23T01:33:59.476Z",
+    "modified": "2023-03-30T08:15:08.826Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"transactionNumber\": 7,\n  \"transactionName\": \"Transaction 3\",\n  \"description\": \"bla-bla\",\n  \"category\": \"Category 3\",\n  \"transactionDate\": \"2022-02-22T13:30:00.000Z\",\n  \"transactionAmount\": 660.0\n}",
+      "raw": "{\n  \"transactionNumber\": 6,\n  \"transactionName\": \"Transaction 6\",\n  \"description\": \"A new description\",\n  \"category\": \"Category 3\",\n  \"transactionDate\": \"2023-03-22T14:00:00.000Z\",\n  \"transactionAmount\": 600.0,\n  \"is_deleted\": false\n}\n",
       "form": []
     },
     "tests": []
@@ -282,6 +282,25 @@
         "isPath": false
       }
     ],
+    "tests": []
+  },
+  {
+    "_id": "0ed8fade-70c1-42f2-95e6-f9f96d33bf71",
+    "colId": "d9de6f36-8833-4792-8cdd-83b652e1815e",
+    "containerId": "",
+    "name": "logical deleting of finance record",
+    "url": "localhost:8888/finance-record/go-deleted",
+    "method": "PUT",
+    "sortNum": 20000,
+    "created": "2023-03-30T08:16:03.804Z",
+    "modified": "2023-03-30T10:14:49.168Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": 2\n}",
+      "form": []
+    },
     "tests": []
   }
 ]

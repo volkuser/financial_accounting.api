@@ -113,4 +113,20 @@ class FinanceRecordController extends ResourceController {
     final financeRecords = await query.fetch();
     return Response.ok(financeRecords);
   }
+
+  @Operation.put('go-deleted')
+  Future<Response> deleteFinanceRecordLogicallyByID(
+      @Bind.query('id') int id) async {
+    final financeRecordQuery = Query<FinanceRecord>(context)
+      ..where((f) => f.id).equalTo(id)
+      ..values.is_deleted = true;
+
+    final deletedRecord = await financeRecordQuery.updateOne();
+
+    if (deletedRecord == null) {
+      return Response.notFound();
+    }
+
+    return Response.ok(deletedRecord);
+  }
 }

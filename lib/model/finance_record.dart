@@ -24,4 +24,7 @@ class _FinanceRecord {
 
   @Column()
   double? transactionAmount;
+
+  @Column()
+  bool is_deleted = false;
 }
